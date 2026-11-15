@@ -1,0 +1,17 @@
+parking_slots = {
+    1: "4587KRJ",
+    2: None,
+    3: "8745MNP",
+    4: None,
+    5: "GC4647BS",
+    6: None,
+    7: None,
+    8: None,
+    9: "6764FWJ",
+    10: None,
+    11: None,
+    12: "3906LXS",
+    13: "3478JKL",
+    14: None,
+    15: None,
+}
