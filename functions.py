@@ -39,9 +39,22 @@ def parking_fee(hours: float, hourly_rate: float = 1.5) -> float:
     pass
 
 
-def register_vehicle_exit(parking_slots: dict[int, str | None], license_plate: str) -> dict[int, str | None]:
-    """
-    Register a vehicle exit from the parking system.
-    """
-    # Comment
-    pass
+def register_vehicle_exit(parking_slots: dict[int, str | None],
+                          license_plate: str,
+                          hours: float) -> dict:
+    """Frees the spot of the car. Returns {spot: ""} if successful, {} if not."""
+    # Error: license plate not found
+    if license_plate not in parking_slots.values():
+        print(f"Error: license plate {license_plate} not found in the parking.")
+        return {}
+
+    # Error: parking fee failed
+    if not parking_fee(hours):
+        print("Error: parking fee could not be calculated (hours cannot be negative).")
+        return {}
+
+    # Free the spot
+    for spot, plate in parking_slots.items():
+        if plate == license_plate:
+            parking_slots[spot] = None
+            return {spot: ""}
