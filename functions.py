@@ -44,10 +44,7 @@ def register_vehicle_entry(parking_slots: dict[int, str | None], license_plate: 
     return None
 
 
-def parking_fee(hours: float, hourly_rate: float = 1.5) -> float:
 """Parking fee calculation."""
-from collections import defaultdict
-
 default_price_per_minute = 0.03  # euros per minute
 
 
