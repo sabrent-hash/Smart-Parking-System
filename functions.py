@@ -23,12 +23,25 @@ def available_spots(parking_slots: dict[int, str | None]) -> tuple[int, list]:
     return available_count, available_slots
 
 
-def register_vehicle_entry(parking_slots: dict[int, str | None], license_plate: str) -> int:
+def register_vehicle_entry(parking_slots: dict[int, str | None], license_plate: str) -> int | None:
     """
     Register a vehicle entry into the parking system.
+
+    Args:
+        parking_slots (dict): All parking slots with key: slot number and value: license plate or None if empty.
+        license_plate (str): License plate of the entering vehicle.
+
+    Returns:
+        int | None: The number of the assigned parking slot, or None if the parking is full.
     """
-    # Comment
-    pass
+    # Loop through the parking slots to find the first available one
+    for slot_number, plate in parking_slots.items():
+        if plate is None:
+            parking_slots[slot_number] = license_plate.upper()
+            return slot_number
+
+    # Return None if no spaces are available
+    return None
 
 
 def parking_fee(hours: float, hourly_rate: float = 1.5) -> float:
